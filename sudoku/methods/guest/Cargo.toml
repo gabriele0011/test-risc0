@@ -1,0 +1,20 @@
+[package]
+name = "guest"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "sudoku"
+path = "src/bin/sudoku.rs"
+
+[workspace]
+
+[dependencies]
+alloy-primitives = { version = "1.0", default-features = false, features = ["rlp", "serde", "std"] }
+alloy-sol-types = { version = "1.0" }
+risc0-zkvm = { version = "2.0.2", default-features = false, features = ['std'] }
+ethers-core = { version = "2", default-features = false }
+
+
+[profile.release]
+lto = "thin"
