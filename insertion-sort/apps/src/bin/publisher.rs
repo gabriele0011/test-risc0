@@ -1,23 +1,10 @@
-// Copyright 2024 RISC Zero, Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-    // Construct function call: Using the IInsertionSort interface, the application constructs
-    // the ABI-encoded function call for the set function of the InsertionSort contract.
-    // This call includes the verified number, the post-state digest, and the seal (proof).
-    // may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-// This application demonstrates how to send an off-chain proof request
-// to the Bonsai proving service and publish the received proofs directly
-// to your deployed app contract.
+/* 
+The program generates a proof based on the execution of the guest code, which implements 
+the Insertion Sort algorithm to sort the elements of an array in ascending order. 
+This proof, certifying the validity of the computation, is published on-chain via 
+the InsertionSort smart contract and is publicly verifiable.
+The programme inputs are described in Struct Args (line 30).
+*/
 
 use alloy::{
     network::EthereumWallet, providers::ProviderBuilder, signers::local::PrivateKeySigner,
@@ -57,7 +44,6 @@ struct Args {
     #[clap(long)]
     contract: Address,
 
-    // (!) DEVE PRENDERE IN INPUT UN VETTORE (!)
     /// The input to provide to the guest binary
     #[clap(short, long, value_delimiter = ',')]
     input: Vec<I256>,
@@ -79,9 +65,9 @@ fn main() -> Result<()> {
     // the input number is ABI-encoded to match the format expected by the guest code running in the zkVM.
     let input = args.input.abi_encode();
 
-
     let env = ExecutorEnv::builder().write_slice(&input).build()?;
 
+    // receipt genereted by the execution of guest code
     let receipt = default_prover()
         .prove_with_ctx(
             env,
@@ -91,7 +77,8 @@ fn main() -> Result<()> {
         )?
         .receipt;
 
-     // Serializza la ricevuta e stampa la dimensione
+    // Serialise the receipt and print the size
+    // (!) you could write to a file in the future
     let serialized_receipt = bincode::serialize(&receipt)?;
     println!("Receipt size: {} bytes", serialized_receipt.len());
 
@@ -101,16 +88,15 @@ fn main() -> Result<()> {
     // Extract the journal from the receipt.
     let journal = receipt.journal.bytes.clone();
 
-    // 1. Decodifica il journal in un vettore di I256.
+    // decode journal
     let sorted_array = Vec::<I256>::abi_decode(&journal)
         .context("Errore durante la decodifica del journal in Vec<I256>")?;
 
-    println!("journal: {:?}", sorted_array);
+    // print journal
+    // println!("journal: {:?}", sorted_array);
 
-    // 2. Quando chiami il contratto, `alloy` gestirà la codifica corretta.
+    // When you call the contract, `alloy` will handle the correct encoding.
     let contract = IInsertionSort::new(args.contract, provider);
-    // La funzione `set` nel tuo contratto dovrà accettare `int32[]` o `int256[]`.
-    // `alloy` convertirà `Vec<I256>` nel formato corretto.
     let call_builder = contract.set(sorted_array, seal.into());
 
     // Initialize the async runtime environment to handle the transaction sending.

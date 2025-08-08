@@ -6,10 +6,10 @@ set -e
 OUTPUT_FILE="risultati_insertionSort.csv"
 
 # Definisci le dimensioni e i tipi di array da testare
-SIZES=(10 100 1000 10000 100000)
+SIZES=(10 50 100 200 400)
 # ai fini della tesi serve solo "casuale"
-TYPES=("casuale" "quasi_ordinato" "inverso" "duplicati")
-
+#TYPES=("casuale" "quasi_ordinato" "inverso" "duplicati")
+TYPES=("casuale")
 CMD_BASE="cargo run --bin publisher -- --chain-id=31337 --rpc-url=http://localhost:8545 --contract=0x0b306bf915c4d645ff596e518faf3f9669b97016"
 
 # --- ESECUZIONE ---

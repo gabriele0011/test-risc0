@@ -20,5 +20,5 @@ pragma solidity ^0.8.20;
 
 library Elf {
     string public constant INSERTION_SORT_PATH =
-        "/home/gabriele/risc0_test/insertion_sort/target/riscv-guest/methods/guests/riscv32im-risc0-zkvm-elf/release/insertion-sort.bin";
+        "/home/gabriele/risc0-test/insertion-sort/target/riscv-guest/methods/guests/riscv32im-risc0-zkvm-elf/release/insertion-sort.bin";
 }

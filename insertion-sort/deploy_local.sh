@@ -37,4 +37,4 @@ echo "    --input=2,7,8,12,15,19,23,34,41,46"
 
 echo "[INFO] Deploy, query e comando publisher pronti."
 echo "[INFO]" Per completare la procedura: 
-echo export ETH_WALLET_PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+echo export ETH_WALLET_PRIVATE_KEY=0x...
