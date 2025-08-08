@@ -83,7 +83,7 @@ You can deploy your contracts and run an end-to-end test or demo as follows:
         --chain-id=31337 \
         --rpc-url=http://localhost:8545 \
         --contract=${SUDOKU_ADDRESS:?} \
-        --input=12345678
+        --matrix='1 0 0 4 0 0 0 0 0 0 0 0 4 0 0 1'    
     ```
 
 3. Query the state again to see the change:
@@ -148,7 +148,7 @@ You can deploy your contracts on the `Sepolia` testnet and run an end-to-end tes
 1. Query the state:
 
     ```bash
-    cast call --rpc-url https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY:?} ${SUDOKU_ADDRESS:?} 'get()(uint256)'
+    cast call --rpc-url https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY:?} ${SUDOKU_ADDRESS:?} 'get()(bytes memory)'
     ```
 
 2. Publish a new state
@@ -158,13 +158,13 @@ You can deploy your contracts on the `Sepolia` testnet and run an end-to-end tes
         --chain-id=11155111 \
         --rpc-url=https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY:?} \
         --contract=${SUDOKU_ADDRESS:?} \
-        --input=12345678
+        --matrix='1 0 0 4 0 0 0 0 0 0 0 0 4 0 0 1'
     ```
 
 3. Query the state again to see the change:
 
     ```bash
-    cast call --rpc-url https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY:?} ${SUDOKU_ADDRESS:?} 'get()(uint256)'
+    cast call --rpc-url https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY:?} ${SUDOKU_ADDRESS:?} 'get()(bytes memory)'
     ```
 
 ## Deploy your project on Ethereum mainnet

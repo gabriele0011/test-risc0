@@ -134,9 +134,5 @@ fn main() -> Result<()> {
     let pending_tx = runtime.block_on(call_builder.send())?;
     runtime.block_on(pending_tx.get_receipt())?;
 
-
-    
-
-
     Ok(())
 }

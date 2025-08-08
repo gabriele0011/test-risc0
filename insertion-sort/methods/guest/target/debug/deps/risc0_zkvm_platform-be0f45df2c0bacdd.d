@@ -1,0 +1,10 @@
+/home/gabriele/risc0_test/insertion_sort/methods/guest/target/debug/deps/librisc0_zkvm_platform-be0f45df2c0bacdd.rmeta: /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/lib.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/memory.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/syscall.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/../README.md
+
+/home/gabriele/risc0_test/insertion_sort/methods/guest/target/debug/deps/librisc0_zkvm_platform-be0f45df2c0bacdd.rlib: /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/lib.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/memory.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/syscall.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/../README.md
+
+/home/gabriele/risc0_test/insertion_sort/methods/guest/target/debug/deps/risc0_zkvm_platform-be0f45df2c0bacdd.d: /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/lib.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/memory.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/syscall.rs /home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/../README.md
+
+/home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/lib.rs:
+/home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/memory.rs:
+/home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/syscall.rs:
+/home/gabriele/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/risc0-zkvm-platform-2.0.2/src/../README.md:
