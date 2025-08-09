@@ -84,7 +84,7 @@ fn main() -> Result<()> {
 
     // Encode the seal with the selector.
     let seal = encode_seal(&receipt)?;
-
+    
     // Extract the journal from the receipt.
     let journal = receipt.journal.bytes.clone();
 
