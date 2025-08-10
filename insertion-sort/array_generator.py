@@ -4,6 +4,9 @@ import random
 def array_generator(tipo, dimensione):
     """Genera un array in base al tipo e alla dimensione specificati."""
     
+    # Imposta un seed fisso per rendere i risultati ripetibili
+    random.seed(42)
+    
     # 1. Array Casuale (numeri tra 1 e dimensione * 2)
     if tipo == "casuale":
         return [str(random.randint(1, dimensione * 2)) for _ in range(dimensione)]

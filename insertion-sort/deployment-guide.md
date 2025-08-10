@@ -10,6 +10,8 @@ You can either:
 - [Deploy to a testnet][section-testnet]
 - [Deploy to Ethereum Mainnet][section-mainnet]
 
+
+
 ## Deploy your project on a local network
 
 You can deploy your contracts and run an end-to-end test or demo as follows:
@@ -98,7 +100,8 @@ You can deploy your contracts and run an end-to-end test or demo as follows:
 
 
 
-## ________________________________________________________________________________________________________________________________
+## S E P O L I A ________________________________________________________________________________________________________________________________
+
 ## Deploy your project on Sepolia testnet
 
 You can deploy your contracts on the `Sepolia` testnet and run an end-to-end test or demo as follows:

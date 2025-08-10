@@ -1,3 +1,13 @@
+/*
+ *    The following test instantiates the IRiscZeroVerifier and InsertionSort smart contracts and generates a proof that will
+ *    then be verified in the InsertionSort smart contract. All the program logic, including proof generation via the prove
+ *    function, checks to verify that the journal produced corresponds to the expected solution, and the call to the smart contract
+ *    via the set function (within which the journal and seal are passed) that verifies the receipt via the smart contract,
+ *    are included in the test_SortUnsortedArray function, which works with a predefined array of 10 elements.
+ *    At the end, a check is made to ensure that the verification was successful and that the status of the smart contract has been
+ *    modified correctly.
+ */
+
 import {RiscZeroCheats} from "risc0/test/RiscZeroCheats.sol";
 import {console2} from "forge-std/console2.sol";
 import {Test} from "forge-std/Test.sol";
@@ -41,7 +51,10 @@ contract InsertionSortTest is RiscZeroCheats, Test {
 
         // Prove the sorting of the array in the zkVM
         // The input to the guest is the ABI-encoded unsorted array
-        (bytes memory journal, bytes memory seal) = prove(Elf.INSERTION_SORT_PATH, abi.encode(unsortedArray));
+        (bytes memory journal, bytes memory seal) = prove(
+            Elf.INSERTION_SORT_PATH,
+            abi.encode(unsortedArray)
+        );
 
         // Decode the journal to get the sorted array from the guest.t the sorted array from the guest.
         int256[] memory provenSortedArray = abi.decode(journal, (int256[]));
@@ -55,5 +68,4 @@ contract InsertionSortTest is RiscZeroCheats, Test {
         // Verify that the contract now holds the sorted array. Verify that the contract now holds the sorted array.
         assertEq(insertionSort.get(), expectedSortedArray);
     }
-
 }
