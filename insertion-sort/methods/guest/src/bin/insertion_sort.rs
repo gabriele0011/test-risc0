@@ -1,6 +1,5 @@
 use std::convert::TryFrom;
 use std::io::Read;
-use alloy_primitives::{I256};
 use alloy_sol_types::SolValue;
 use risc0_zkvm::guest::env;
 
@@ -10,7 +9,7 @@ use risc0_zkvm::guest::env;
 *   Starts from the second element, compares with preceding elements to find the correct position and inserts.
 */
 
-fn insertion_sort(arr: &mut Vec<I256>) {
+fn insertion_sort(arr: &mut Vec<i32>) {
     
     // calculate arr len
     let n = arr.len();
@@ -48,14 +47,14 @@ fn main() {
     env::stdin().read_to_end(&mut input_bytes).expect("Failed to read initial input from env");
     
     // deserialized bytes to Vec<i32>
-    let mut arr = Vec::<I256>::abi_decode(&input_bytes).expect("Failed to decode input");
+    let mut arr = Vec::<i32>::abi_decode(&input_bytes).expect("Failed to decode input");
     
     // sort array
     insertion_sort(&mut arr);    
 
-    // Convert Vec<i32> to Vec<I256> before commit
-    let sorted_array: Vec<I256> = arr.iter().map(|&x| {
-        I256::try_from(x).expect("La conversione da i32 a I256 non dovrebbe fallire")
+    // Convert Vec<i32> to Vec<i32> before commit
+    let sorted_array: Vec<i32> = arr.iter().map(|&x| {
+        i32::try_from(x).expect("La conversione da i32 a i32 non dovrebbe fallire")
     }).collect();
 
     // commit the result to env

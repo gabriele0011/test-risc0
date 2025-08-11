@@ -20,5 +20,5 @@ pragma solidity ^0.8.20;
 
 library ImageID {
     bytes32 public constant INSERTION_SORT_ID =
-        bytes32(0xcce945b96e7b35d462208b9d1f035e2a041a58a7601a1df70df0f196da1ad325);
+        bytes32(0xb5545e692de1264fccb511f73be8b259bf53318bf52a7e91b453b597457da77e);
 }

@@ -3,14 +3,14 @@
 set -e
 
 # deploy locale
-sourcedeploy_local.sh
+source deploy_local.sh
 
 # --- CONFIGURAZIONE ---
-OUTPUT_FILE="risultati_insertionSort.csv"
+OUTPUT_FILE="test_insertionSort.csv"
 
 # Definisci le dimensioni e i tipi di array da testare
 # SIZES=(10 50 100 200 400) 
-SIZES=(10 50)
+SIZES=(100 200 300)
 # ai fini della tesi serve solo "casuale"
 #TYPES=("casuale" "quasi_ordinato" "inverso" "duplicati")
 TYPES=("casuale")

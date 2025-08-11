@@ -10,7 +10,7 @@ use alloy::{
     network::EthereumWallet, providers::ProviderBuilder, signers::local::PrivateKeySigner,
     sol_types::SolValue,
 };
-use alloy_primitives::{Address, I256}; 
+use alloy_primitives::{Address}; 
 use anyhow::{Context, Result};
 use clap::Parser;
 use methods::INSERTION_SORT_ELF;
@@ -46,7 +46,7 @@ struct Args {
 
     /// The input to provide to the guest binary
     #[clap(short, long, value_delimiter = ',')]
-    input: Vec<I256>,
+    input: Vec<i32>,
 }
 
 fn main() -> Result<()> {
@@ -89,7 +89,7 @@ fn main() -> Result<()> {
     let journal = receipt.journal.bytes.clone();
 
     // decode journal
-    let sorted_array = Vec::<I256>::abi_decode(&journal)
+    let sorted_array = Vec::<i32>::abi_decode(&journal)
         .context("Errore durante la decodifica del journal in Vec<I256>")?;
 
     // print journal
