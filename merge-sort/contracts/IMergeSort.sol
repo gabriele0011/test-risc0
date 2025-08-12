@@ -22,8 +22,8 @@ pragma solidity ^0.8.20;
 ///      or difficult to implement function to a RISC Zero guest running on the zkVM.
 interface IMergeSort {
     /// @notice Set the sorted array stored on the contract. Requires a RISC Zero proof.
-    function set(int256[] memory x, bytes calldata seal) external;
+    function set(int32[] memory x, bytes calldata seal) external;
 
     /// @notice Returns the sorted array.
-    function get() external view returns (int256[] memory);
+    function get() external view returns (int32[] memory);
 }

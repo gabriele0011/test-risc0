@@ -16,16 +16,23 @@ import {MergeSort} from "../contracts/MergeSort.sol";
 import {Elf} from "./Elf.sol"; // auto-generated contract after running `cargo build`.
 
 contract MergeSortTest is RiscZeroCheats, Test {
-    MergeSort public MergeSort;
+    MergeSort public mergeSort;
 
     function setUp() public {
         IRiscZeroVerifier verifier = deployRiscZeroVerifier();
         mergeSort = new MergeSort(verifier);
     }
+    // Helper to compare int32[] arrays, since forge-std doesn't provide assertEq for int32[]
+    function assertEqInt32Arrays(int32[] memory a, int32[] memory b) internal pure {
+        assertEq(a.length, b.length, "length mismatch");
+        for (uint256 i = 0; i < a.length; i++) {
+            assertEq(int256(a[i]), int256(b[i]));
+        }
+    }
 
     function test_SortUnsortedArray() public {
         // Inizializza esplicitamente un array dinamico in memoria.
-        int256[] memory unsortedArray = new int256[](10);
+        int32[] memory unsortedArray = new int32[](10);
         unsortedArray[0] = 23;
         unsortedArray[1] = 7;
         unsortedArray[2] = 41;
@@ -37,7 +44,7 @@ contract MergeSortTest is RiscZeroCheats, Test {
         unsortedArray[8] = 46;
         unsortedArray[9] = 12;
 
-        int256[] memory expectedSortedArray = new int256[](10);
+        int32[] memory expectedSortedArray = new int32[](10);
         expectedSortedArray[0] = 2;
         expectedSortedArray[1] = 7;
         expectedSortedArray[2] = 8;
@@ -57,15 +64,15 @@ contract MergeSortTest is RiscZeroCheats, Test {
         );
 
         // Decode the journal to get the sorted array from the guest.t the sorted array from the guest.
-        int256[] memory provenSortedArray = abi.decode(journal, (int256[]));
+        int32[] memory provenSortedArray = abi.decode(journal, (int32[]));
 
         // Check that the journal output is the correctly sorted array.        // Check that the journal output is the correctly sorted array.
-        assertEq(provenSortedArray, expectedSortedArray);
+        assertEqInt32Arrays(provenSortedArray, expectedSortedArray);
 
         // Set the state on the contract.
-        MergeSort.set(provenSortedArray, seal);
+        mergeSort.set(provenSortedArray, seal);
 
         // Verify that the contract now holds the sorted array. Verify that the contract now holds the sorted array.
-        assertEq(MergeSort.get(), expectedSortedArray);
+        assertEqInt32Arrays(mergeSort.get(), expectedSortedArray);
     }
 }

@@ -19,5 +19,5 @@
 pragma solidity ^0.8.20;
 
 library ImageID {
-    bytes32 public constant MERGE_SORT_ID = bytes32(0x7c9f219842c260b7fab1df3dad6cad6e14d70ac4906b0a3c688654a553439e15);
+    bytes32 public constant MERGE_SORT_ID = bytes32(0xae3bb59b1db744de673d49e12150151908919f9d20cd4b0b9efe8560b5214b0f);
 }

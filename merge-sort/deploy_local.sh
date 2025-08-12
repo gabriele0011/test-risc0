@@ -29,7 +29,7 @@ echo "export ETH_WALLET_PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cb
 echo "export MERGE_SORT_ADDRESS=$MERGE_SORT_ADDRESS" >> .env_vars
 
 # 6. Query stato iniziale
-cast call --rpc-url http://localhost:8545 $MERGE_SORT_ADDRESS 'get()(int256[])'
+cast call --rpc-url http://localhost:8545 $MERGE_SORT_ADDRESS 'get()(int32[])'
 echo "[INFO] Deploy e query completati. Ora puoi usare il publisher."
 
 # 7. Mostra comando per pubblicare un nuovo stato

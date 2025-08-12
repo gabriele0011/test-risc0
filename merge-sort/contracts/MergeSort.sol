@@ -35,7 +35,7 @@ contract MergeSort {
 
     /// @notice An array that is guaranteed, by the RISC Zero zkVM, to be sorted.
     ///         It can be set by calling the `set` function.
-    int256[] public sorted_array;
+    int32[] public sorted_array;
 
     /// @notice Initialize the contract, binding it to a specified RISC Zero verifier.
     constructor(IRiscZeroVerifier _verifier) {
@@ -43,7 +43,7 @@ contract MergeSort {
     }
 
     /// @notice Set the sorted array stored on the contract. Requires a RISC Zero proof.
-    function set(int256[] memory _sorted_array, bytes calldata seal) public {
+    function set(int32[] memory _sorted_array, bytes calldata seal) public {
         // The journal is the ABI-encoded representation of the function outputs.
         // In this case, the sorted array.
         bytes memory journal = abi.encode(_sorted_array);
@@ -54,7 +54,7 @@ contract MergeSort {
     }
 
     /// @notice Returns the sorted array.
-    function get() public view returns (int256[] memory) {
+    function get() public view returns (int32[] memory) {
         return sorted_array;
     }
 }
