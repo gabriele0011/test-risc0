@@ -19,5 +19,5 @@
 pragma solidity ^0.8.20;
 
 library ImageID {
-    bytes32 public constant HEAP_SORT_ID = bytes32(0xb5357af82c09e54dc2e4c4e9d2f6a3a777ddf6a8ef103e66fbb7c42c9ad03ae9);
+    bytes32 public constant HEAP_SORT_ID = bytes32(0x67f71b5a0f010829d8ba96003c61670e97888d8912fe6ae311465be1797a1101);
 }

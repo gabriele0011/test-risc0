@@ -1,5 +1,4 @@
 use std::io::Read;
-use alloy_primitives::{I256};
 use alloy_sol_types::SolValue;
 use risc0_zkvm::guest::env;
 
@@ -9,8 +8,8 @@ use risc0_zkvm::guest::env;
 *   Starts from the second element, compares with preceding elements to find the correct position and inserts.
 */
 
-// Ordina uno slice mutabile di I256 in-place usando l'algoritmo Heap Sort.
-pub fn heapsort(arr: &mut [I256]) {
+// Ordina uno slice mutabile di i32 in-place usando l'algoritmo Heap Sort.
+pub fn heapsort(arr: &mut [i32]) {
     if arr.len() <= 1 {
         return; // Già ordinato o vuoto
     }
@@ -29,7 +28,7 @@ pub fn heapsort(arr: &mut [I256]) {
 }
 
 /// Riordina il sotto-albero con radice al nodo `i` per mantenere la proprietà del Max Heap.
-fn max_heapify(arr: &mut [I256], heap_size: usize, i: usize) {
+fn max_heapify(arr: &mut [i32], heap_size: usize, i: usize) {
     let left = 2 * i + 1;
     let right = 2 * i + 2;
 
@@ -48,8 +47,8 @@ fn max_heapify(arr: &mut [I256], heap_size: usize, i: usize) {
     }
 }
 
-/// Costruisce un Max Heap a partire da uno slice non ordinato di I256.
-fn build_max_heap(arr: &mut [I256]) {
+/// Costruisce un Max Heap a partire da uno slice non ordinato di i32.
+fn build_max_heap(arr: &mut [i32]) {
     let n = arr.len();
     // Itera su tutti i nodi che non sono foglie, dal basso verso l'alto.
     for i in (0..n / 2).rev() {
@@ -65,8 +64,8 @@ fn main() {
     env::stdin().read_to_end(&mut input_bytes).expect("Failed to read initial input from env");
     
     // deserialized bytes to Vec<i32>
-    //let mut arr = Vec::<I256>::abi_decode(&input_bytes).expect("Failed to decode input");
-    let mut arr: Vec<I256> = Vec::<I256>::abi_decode(&input_bytes).expect("Failed to decode input");
+    //let mut arr = Vec::<i32>::abi_decode(&input_bytes).expect("Failed to decode input");
+    let mut arr: Vec<i32> = Vec::<i32>::abi_decode(&input_bytes).expect("Failed to decode input");
     
     // sort array
     heapsort(&mut arr);    
